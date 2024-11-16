@@ -9,6 +9,8 @@ export interface User {
   timeline: Timeline[];
   skills: Skill[];
   social_handles: SocialHandle[];
+  services: Service[];
+  projects: Project[];
 }
 
 export interface About {
@@ -39,6 +41,18 @@ export interface Skill {
   _id: string;
 }
 
+export interface Project {
+  liveurl: string;
+  githuburl: string;
+  title: string;
+  sequence: number;
+  image: Image;
+  description: string;
+  techStack: string[];
+  _id: string;
+  enabled: boolean;
+}
+
 export interface Image {
   public_id: string;
   url: string;
@@ -50,6 +64,15 @@ export interface SocialHandle {
   image: Image;
   enabled: boolean;
   _id: string;
+}
+
+export interface Service {
+  name: string;
+  charge: string;
+  desc: string;
+  enabled: boolean;
+  _id: string;
+  image: Image;
 }
 
 export interface Timeline {
