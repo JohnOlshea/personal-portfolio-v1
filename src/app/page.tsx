@@ -1,4 +1,5 @@
 import About from "@/components/about";
+import Experience from "@/components/experience";
 import Header from "@/components/header";
 import { Hero } from "@/components/hero";
 import { UserObject } from "@/utils/interfaces";
@@ -103,6 +104,7 @@ export default async function Home() {
       <Header social={social_handles} />
       <Hero about={about} />
       <About about={about} timeline={timeline} />
-    </main>
+      <Experience timeline={timeline} />
+      </main>
   );
 }

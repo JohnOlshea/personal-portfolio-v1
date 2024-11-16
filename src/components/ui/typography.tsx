@@ -2,7 +2,24 @@
 
 import { cn } from "@/utils/cn";
 import { motion, HTMLMotionProps } from "framer-motion";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
+
+interface SectionHeadingProps extends HTMLMotionProps<"h3"> {}
+
+export const SectionHeading = ({
+  className,
+  ...props
+}: SectionHeadingProps) => {
+  return (
+    <motion.h3
+      className={cn(
+        "text-4xl md:text-6xl font-semibold md:px-4 px-2 pb-10 mx-auto",
+        className
+      )}
+      {...props}
+    />
+  );
+};
 
 interface TextRevealProps {
   children: string;
@@ -56,3 +73,34 @@ export const TextReveal = ({ children, className }: TextRevealProps) => {
     </motion.div>
   );
 };
+
+export function PerspectiveText({
+  children,
+  hover,
+}: {
+  children: string;
+  hover?: boolean;
+}) {
+  return (
+    <motion.div className="relative overflow-hidden whitespace-pre">
+      <motion.div
+        initial={{ y: 0 }}
+        animate={{ y: hover ? "-100%" : 0 }}
+        layout
+        transition={{ delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+        className="py-2"
+      >
+        {children}
+      </motion.div>
+      <motion.div
+        initial={{ y: "100%" }}
+        animate={{ y: hover ? 0 : "100%" }}
+        layout
+        transition={{ delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+        className="absolute left-0 top-0 py-2"
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+}
