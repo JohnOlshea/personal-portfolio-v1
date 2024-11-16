@@ -2,6 +2,7 @@ import About from "@/components/about";
 import Experience from "@/components/experience";
 import Header from "@/components/header";
 import { Hero } from "@/components/hero";
+import Projects from "@/components/projects";
 import { HoverImageLink, ParallaxText, SectionHeading, SlideIn, Transition } from "@/components/ui";
 import { UserObject } from "@/utils/interfaces";
 
@@ -114,6 +115,22 @@ export default async function Home() {
             "url": "https://portfolio-image-store.s3.ap-south-1.amazonaws.com/1708718250873-3038n7.webp"
           },
         }
+      ],
+      "projects": [
+        {
+          "liveurl": "string",
+          "githuburl": "string",
+          "title": "string",
+          "sequence": 2,
+          "image": {
+            "public_id": "1708718250873-3038n7.webp",
+            "url": "https://portfolio-image-store.s3.ap-south-1.amazonaws.com/1708718250873-3038n7.webp"
+          },
+          "description": "string",
+          "techStack": ["string"],
+          "_id": "string",
+          "enabled": true, 
+        }
       ]
     }
   }
@@ -126,6 +143,7 @@ export default async function Home() {
     timeline,
     skills,
     services,
+    projects,
   } = user;
 
   return (
@@ -205,6 +223,8 @@ export default async function Home() {
           </div>
         </Transition>
       </section>
+      {/* ===PROJECTS SECTION=== */}
+      <Projects data={projects} />
     </main>
   );
 }
