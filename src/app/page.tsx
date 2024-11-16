@@ -1,3 +1,4 @@
+import About from "@/components/about";
 import Header from "@/components/header";
 import { Hero } from "@/components/hero";
 import { UserObject } from "@/utils/interfaces";
@@ -5,7 +6,6 @@ import { UserObject } from "@/utils/interfaces";
 export default async function Home() {
   const res = {
     "success": true,
-    
     "user": {
       "_id": "65b3a22c01d900e96c4219ae",
       "about": {
@@ -72,6 +72,21 @@ export default async function Home() {
           "_id": "65b3e43cb48589dfcae1856c"
         }
       ],
+      "timeline": [
+        {
+          "company_name": "7360",
+          "summary": "string",
+          "sequence": 2,
+          "startDate": "date",
+          "endDate": "date",
+          "jobTitle": "Fullstack developer",
+          "jobLocation": "UK",
+          "bulletPoints": ["a", "b"],
+          "forEducation": true,
+          "enabled": true,
+          "_id": "1",
+        }
+      ]
     }
   }
 
@@ -80,12 +95,14 @@ export default async function Home() {
   const {
     about,
     social_handles,
+    timeline,
   } = user;
 
   return (
     <main className="relative">
       <Header social={social_handles} />
       <Hero about={about} />
+      <About about={about} timeline={timeline} />
     </main>
   );
 }
