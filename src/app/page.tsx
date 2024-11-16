@@ -2,6 +2,7 @@ import About from "@/components/about";
 import Experience from "@/components/experience";
 import Header from "@/components/header";
 import { Hero } from "@/components/hero";
+import { ParallaxText } from "@/components/ui";
 import { UserObject } from "@/utils/interfaces";
 
 export default async function Home() {
@@ -87,6 +88,19 @@ export default async function Home() {
           "enabled": true,
           "_id": "1",
         }
+      ],
+      "skills": [
+        {
+          "enabled": true,
+          "name": "string",
+          "sequence": 1,
+          "percentage": 2,
+          "image": {
+            "public_id": "portfolio3/1713995155677-122l5x.webp",
+            "url": "https://portfolio-image-store.s3.ap-south-1.amazonaws.com/portfolio3/1713995155677-122l5x.webp"
+          },
+          "_id": "string",
+        }
       ]
     }
   }
@@ -97,6 +111,7 @@ export default async function Home() {
     about,
     social_handles,
     timeline,
+    skills,
   } = user;
 
   return (
@@ -105,6 +120,51 @@ export default async function Home() {
       <Hero about={about} />
       <About about={about} timeline={timeline} />
       <Experience timeline={timeline} />
-      </main>
+      {/* ===SKILLS SECTION=== */}
+      <section id="skills">
+        <ParallaxText baseVelocity={-5}>
+          {skills
+            .sort((a, b) => a.sequence - b.sequence)
+            .map((skill) =>
+              skill.enabled ? (
+                <span
+                  key={skill._id}
+                  className="md:text-7xl text-xl font-semibold uppercase text-white/30"
+                >
+                  {skill.name} •
+                </span>
+              ) : null
+            )}
+        </ParallaxText>
+        <ParallaxText baseVelocity={5}>
+          {skills
+            .sort((a, b) => a.sequence - b.sequence)
+            .map((skill) =>
+              skill.enabled ? (
+                <span
+                  key={skill._id}
+                  className="md:text-7xl text-xl font-semibold uppercase text-white/30"
+                >
+                  {skill.name} •
+                </span>
+              ) : null
+            )}
+        </ParallaxText>
+        <ParallaxText baseVelocity={-5}>
+          {skills
+            .sort((a, b) => a.sequence - b.sequence)
+            .map((skill) =>
+              skill.enabled ? (
+                <span
+                  key={skill._id}
+                  className="md:text-7xl text-xl font-semibold uppercase text-white/30"
+                >
+                  {skill.name} •
+                </span>
+              ) : null
+            )}
+        </ParallaxText>
+      </section>
+    </main>
   );
 }

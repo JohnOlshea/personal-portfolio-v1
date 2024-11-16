@@ -7,6 +7,7 @@ export interface User {
   about: About;
   _id: string;
   timeline: Timeline[];
+  skills: Skill[];
   social_handles: SocialHandle[];
 }
 
@@ -27,6 +28,15 @@ export interface About {
 export interface Avatar {
   public_id: string;
   url: string;
+}
+
+export interface Skill {
+  enabled: boolean;
+  name: string;
+  sequence: number;
+  percentage: number;
+  image: Avatar;
+  _id: string;
 }
 
 export interface Image {
